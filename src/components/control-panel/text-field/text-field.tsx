@@ -2,26 +2,29 @@ import { useState } from 'react';
 import { addInput } from '../../../store/itemSlice';
 import { useAppDispatch } from '../../../utils/hooks';
 import styles from '../control-panel.module.css'
-import { InputItem } from '../../../utils/types';
+import type { TextField } from '../../../utils/types';
 import { v4 as uuid } from "uuid";
 
 function TextField() {
   const dispatch = useAppDispatch();
   const initialFormState = { isRequired: false};
-  const [formState, setFormState] = useState<InputItem>(initialFormState);
+  const [formState, setFormState] = useState<TextField>(initialFormState);
 
   const isActionDisabled = formState?.inputType === undefined
     || formState?.name === undefined
-    || formState?.label === undefined;
+    || formState?.label === undefined
+    || formState?.placeholder === undefined;
 
   const handleAddTextField = () => {
     console.log('formState', formState);
     
     dispatch(addInput({
       id: uuid(),
+      type: 'text',
       inputType: formState.inputType,
       name: formState.name,
       label: formState.label,
+      placeholder: formState.placeholder,
       isRequired: formState.isRequired,
     }));
   };
@@ -49,6 +52,12 @@ function TextField() {
           placeholder={'Лейбл'}
           id='label'
           onChange={(e) => setFormState({...formState, label: e.target.value})}
+        />
+        <input
+          type="text"
+          placeholder={'Плейсхолдер'}
+          id='placeholder'
+          onChange={(e) => setFormState({...formState, placeholder: e.target.value})}
         />
         <select
           defaultValue=""

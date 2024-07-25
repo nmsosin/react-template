@@ -15,9 +15,11 @@ const itemSlice = createSlice({
         state.inputList.push({
           id: action.payload.id,
           inputType: action.payload.inputType,
+          type: action.payload.type,
           name: action.payload.name,
           label: action.payload.label,
           isRequired: action.payload.isRequired,
+          options: action.payload.options,
         });
         
         console.log('state.inputList', state.inputList);
