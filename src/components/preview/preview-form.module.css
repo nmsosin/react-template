@@ -1,0 +1,17 @@
+.container {
+  border: 1px solid gainsboro;
+  border-radius: 10px;
+  width: 100%;
+  height: 55vh;
+  padding: 10px 20px 50px;
+  overflow: scroll;
+  scrollbar-color: black transparent;
+  scrollbar-width: thin;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sectionTitle {
+  margin: 40px 0 20px;
+}
