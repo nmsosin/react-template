@@ -10,7 +10,7 @@ function ListField() {
   const initialFormState = { isRequired: false};
   const [formState, setFormState] = useState<ListField>(initialFormState);
 
-  const isActionDisabled = formState?.inputType === undefined
+  const isActionDisabled = formState?.options === undefined
     || formState?.name === undefined
     || formState?.label === undefined;
 
