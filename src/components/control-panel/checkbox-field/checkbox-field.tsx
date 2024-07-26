@@ -22,6 +22,8 @@ function CheckboxField() {
             <h3 className={styles.subtitle}>Чекбокс</h3>
             <button type='button' onClick={handleAddCheckboxField} className={styles.addButton}>+</button>
           </div>
+            {/* TODO: Удалить после добавления функционала */}
+            <p style={{color: "red", fontSize: "10px",}}>В работе</p>
           <input type="text" placeholder={'Название'} id='name' />
           <input type="text" placeholder={'Лейбл'} id='name' />
           <label htmlFor="required">

@@ -23,6 +23,8 @@ function SubmitButton() {
             <h3 className={styles.subtitle}>Кнопка</h3>
             <button type='button' onClick={handleAddSubmitButton} className={styles.addButton}>+</button>
           </div>
+          {/* TODO: Удалить после добавления функционала */}
+          <p style={{color: "red", fontSize: "10px",}}>В работе</p>
           <input type="text" placeholder={'Название'} id='name' />
         </form>
     </>
