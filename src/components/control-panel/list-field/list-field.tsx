@@ -33,7 +33,7 @@ function ListField() {
         <div className={styles.actions}>
           <h3 className={styles.subtitle}>Список</h3>
           <button
-            // disabled={isActionDisabled}
+            disabled={isActionDisabled}
             type='button'
             onClick={handleAddListField}
             className={styles.addButton}

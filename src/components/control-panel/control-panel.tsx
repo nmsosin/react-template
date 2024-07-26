@@ -5,9 +5,6 @@ import SubmitButton from './submit-button/submit-button';
 import TextField from './text-field/text-field';
 
 function ControlPanel() {
-  const handleAddSubmitButton = () => {
-    console.log('add submit button');
-  }
 
   return (
     <>

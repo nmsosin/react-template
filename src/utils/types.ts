@@ -1,5 +1,5 @@
 export type InputItem  = {
-  inputType?: 'text' | 'email' | 'phone' | 'number';
+  inputType?: string;
   type?: string;
   id?: string;
   name?: string;
