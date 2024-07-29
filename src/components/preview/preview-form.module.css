@@ -2,6 +2,7 @@
   border: 1px solid gainsboro;
   border-radius: 10px;
   width: 100%;
+  max-width: 400px;
   height: 60%;
   padding: 10px 20px 50px;
   overflow: scroll;
@@ -9,13 +10,6 @@
   scrollbar-width: thin;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-}
-
-.form {
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
   gap: 10px;
 }
 

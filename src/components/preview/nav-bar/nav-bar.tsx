@@ -1,11 +1,6 @@
-import { Dispatch, FC, SetStateAction } from "react";
+import { FC } from "react";
 import styles from './nav-bar.module.css';
-
-type NavBarProps = {
-  activePage: 'preview' | 'layout' | 'styles';
-  setActivePage: Dispatch<SetStateAction<"preview" | "layout" | "styles">>;
-  isDisabled: boolean;
-}
+import { NavBarProps } from "./nav-bar.types";
 
 const NavBar: FC <NavBarProps> = ({ activePage = 'preview', setActivePage, isDisabled }) => {
   return (

@@ -1,8 +1,9 @@
 import styles from './preview-form.module.css'
 import { useAppSelector } from "../../utils/hooks";
-import { useRef, useState } from 'react';
+import { CSSProperties, useRef, useState } from 'react';
 import LayoutCode from './export-layout/export-layout';
 import NavBar from './nav-bar/nav-bar';
+import { formStyles, normalizedStyles } from './config';
 
 function PreviewForm() {
   const inputList = useAppSelector(state => state.inputs.inputList);
@@ -12,21 +13,19 @@ function PreviewForm() {
 
   const isFormFilled = inputList.length > 0;
 
-  const exportStyles = formRef.current && getComputedStyle(formRef.current)
-  console.log('formRef.current', formRef.current);
-
   return (
     <div>
       <h2 className={styles.sectionTitle}>Предварительный просмотр формы</h2>
         <NavBar activePage={activePage} setActivePage={setActivePage} isDisabled={!isFormFilled} />
       <div className={styles.container}>
-        { activePage === 'preview' && 
+        { activePage === 'preview' && inputList.length > 0 &&
           <form
             action='submit'
             id="codeOutput"
             onSubmit={() => alert('Submit handler')}
             ref={formRef}
-            className={styles.form}
+            className="form"
+            style={formStyles}
           >
             {inputList.length > 0 && inputList.map((item, idx) => {
               if (item.type === 'text') {
@@ -54,7 +53,7 @@ function PreviewForm() {
                     { item.label }
                 </label>
               } else if (item.type === 'button') {
-                return <button type="submit">
+                return <button key={idx} type="submit">
                   {item.name}
                 </button>
               }
@@ -68,8 +67,8 @@ function PreviewForm() {
           <LayoutCode layout={formRef.current} />
         }
 
-        { activePage === 'styles' && formRef && formRef.current && exportStyles &&
-          <LayoutCode layout={(formRef.current as HTMLFormElement).style} />
+        { activePage === 'styles' &&
+          <LayoutCode layout={normalizedStyles} />
         }
       </div>
     </div>
