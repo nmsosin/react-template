@@ -11,6 +11,7 @@ export type InputItem  = {
 
 export type TextField = Omit<InputItem, 'options'>;
 export type ListField = Omit<InputItem, 'placeholder'>;
+export type ButtonField = Pick<InputItem, 'name' | 'type' | 'id'>;
 
 
 export type InputList = {

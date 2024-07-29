@@ -10,8 +10,6 @@ const itemSlice = createSlice({
   initialState,
     reducers: {
       addInput(state, action: PayloadAction<InputItem>) {
-        console.log('action.payload', action.payload);
-        
         state.inputList.push({
           id: action.payload.id,
           inputType: action.payload.inputType,
@@ -22,7 +20,13 @@ const itemSlice = createSlice({
           options: action.payload.options,
         });
         
-        console.log('state.inputList', state.inputList);
+        if (state.inputList.some(item => item.type === 'button')) {
+          const buttonItem = state.inputList.find(item => item.type === 'button');
+          const buttonItemIdx = state.inputList.findIndex(item => item.type === 'button');
+          if (buttonItem && buttonItemIdx !== state.inputList.length - 1) {
+            state.inputList = state.inputList.filter(item => item.type !== 'button').concat(buttonItem);
+          }
+        }
       },
       deleteInput(state, action: PayloadAction<InputItem>) {
         console.log('state', state);

@@ -16,8 +16,6 @@ function TextField() {
     || formState?.placeholder === undefined;
 
   const handleAddTextField = () => {
-    console.log('formState', formState);
-    
     dispatch(addInput({
       id: uuid(),
       type: 'text',
@@ -69,11 +67,11 @@ function TextField() {
           <option value="phone">phone</option>
           <option value="number">number</option>
         </select>
-        <label htmlFor="required">
+        <label htmlFor="text-required">
           <input
             type="checkbox"
-            id='required'
-            onChange={(e) => setFormState({...formState, isRequired: e.target.checked})}
+            id='text-required'
+            onChange={(e) => setFormState( f => ({...f, isRequired: e.target.checked}))}
           />
           Обязательное
         </label>

@@ -1,18 +1,26 @@
+import { useState } from 'react';
+import { useAppDispatch } from '../../../utils/hooks';
 import styles from '../control-panel.module.css'
+import { ListField } from '../../../utils/types';
+import { addInput } from '../../../store/itemSlice';
+import { v4 as uuid } from "uuid";
 
 
 function CheckboxField() {
+  const dispatch = useAppDispatch();
+  const initialFormState = { isRequired: false};
+  const [checkboxState, setCheckboxState] = useState<ListField>(initialFormState);
+
+  const isActionDisabled = checkboxState?.name === undefined || checkboxState?.label === undefined;
+
   const handleAddCheckboxField = () => {
-    alert("COMING SOON");
-    
-    // dispatch(addInput({
-    //   id: uuid(),
-    //   type: 'list',
-    //   name: formState.name,
-    //   label: formState.label,
-    //   options: (formState.options as string).split(','),
-    //   // isRequired: formState.isRequired,
-    // }));
+    dispatch(addInput({
+      id: uuid(),
+      type: 'checkbox',
+      name: checkboxState.name,
+      label: checkboxState.label,
+      isRequired: checkboxState.isRequired,
+    }));
   };
 
   return (
@@ -20,14 +28,31 @@ function CheckboxField() {
         <form className={styles.item}>
           <div className={styles.actions}>
             <h3 className={styles.subtitle}>Чекбокс</h3>
-            <button type='button' onClick={handleAddCheckboxField} className={styles.addButton}>+</button>
+            <button
+              type='button'
+              onClick={handleAddCheckboxField}
+              className={styles.addButton}
+              disabled={isActionDisabled}  
+            >+</button>
           </div>
-            {/* TODO: Удалить после добавления функционала */}
-            <p style={{color: "red", fontSize: "10px",}}>В работе</p>
-          <input type="text" placeholder={'Название'} id='name' />
-          <input type="text" placeholder={'Лейбл'} id='name' />
-          <label htmlFor="required">
-            <input type="checkbox" id='required' />
+          <input
+            type="text"
+            placeholder={'Название'}
+            id='name'
+            onChange={(e) => setCheckboxState({...checkboxState, name: e.currentTarget.value})}
+          />
+          <input
+            type="text"
+            placeholder={'Лейбл'}
+            id='checkbox-label'
+            onChange={(e) => setCheckboxState({...checkboxState, label: e.target.value})}
+          />
+          <label htmlFor="checkbox-required">
+            <input
+              type="checkbox"
+              id='checkbox-required'
+              onChange={(e) => setCheckboxState(f => ({...f, isRequired: e.target.checked}))}
+            />
             Обязательное
           </label>
         </form>

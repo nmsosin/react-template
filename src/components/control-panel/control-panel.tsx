@@ -7,9 +7,9 @@ import TextField from './text-field/text-field';
 function ControlPanel() {
 
   return (
-    <>
+    <div className={styles.container}>
+      <h2 className={styles.sectionTitle}>Выбор элемента формы</h2>
       <div className={styles.panel}>
-        <h2>Выбор элемента формы</h2>
         <TextField />
         <hr/>
 
@@ -21,7 +21,7 @@ function ControlPanel() {
 
         <SubmitButton />
       </div>
-    </>
+    </div>
   )
 }
 

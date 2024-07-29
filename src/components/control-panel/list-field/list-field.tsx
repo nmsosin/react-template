@@ -15,15 +15,13 @@ function ListField() {
     || formState?.label === undefined;
 
   const handleAddListField = () => {
-    console.log('formState', formState);
-    
     dispatch(addInput({
       id: uuid(),
       type: 'list',
       name: formState.name,
       label: formState.label,
       options: (formState.options as string).split(','),
-      // isRequired: formState.isRequired,
+      isRequired: formState.isRequired,
     }));
   };
 
@@ -57,6 +55,14 @@ function ListField() {
           id='options'
           onChange={(e) => setFormState({...formState, options: e.target.value})}  
         />
+        <label htmlFor="list-required">
+          <input
+            type="checkbox"
+            id='list-required'
+            onChange={(e) => setFormState( f => ({...f, isRequired: e.target.checked}))}
+          />
+          Обязательное
+        </label>
       </form>
     </>
   )
