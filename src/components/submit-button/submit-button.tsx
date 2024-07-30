@@ -37,7 +37,9 @@ const SubmitButton: FC<SubmitButtonProps> = ({ isEditable, button, closeModal })
       type: 'button',
       name: buttonState.name,
     }));
-    closeModal();
+    if (closeModal) {
+      closeModal();
+    }
   };
 
   return (
@@ -63,7 +65,7 @@ const SubmitButton: FC<SubmitButtonProps> = ({ isEditable, button, closeModal })
           type="text"
           placeholder='Название'
           value={buttonState.name}
-          id='name'
+          id='name_submitButton'
           onChange={(e) => setButtonState(f => ({...f, name: e.target.value}))}
         />
       </form>

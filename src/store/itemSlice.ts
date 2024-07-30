@@ -16,9 +16,13 @@ const itemSlice = createSlice({
           type: action.payload.type,
           name: action.payload.name,
           label: action.payload.label,
+          placeholder: action.payload.placeholder,
           isRequired: action.payload.isRequired,
           options: action.payload.options,
         });
+
+        console.log('>>>>>>>>>>>>', action.payload);
+        
         
         if (state.inputList.some(item => item.type === 'button')) {
           const buttonItem = state.inputList.find(item => item.type === 'button');

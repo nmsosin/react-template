@@ -5,6 +5,7 @@ import Modal from '../../modal/modal';
 import { deleteInput } from '../../../store/itemSlice';
 import { InputItem } from '../../../utils/types';
 import SubmitButton from '../../submit-button/submit-button';
+import TextField from '../../text-field/text-field';
 
 export type EditableItemProps = {
   item: InputItem;
@@ -49,10 +50,26 @@ const EditableItem:FC<EditableItemProps> = ({children, item}) => {
         </div> : null
         }
       </div>
+
       {
-        isEditModalOpen &&
+        isEditModalOpen && item.type === 'button' &&
         <Modal children={<SubmitButton isEditable button={item} closeModal={() => setIsEditModalOpen(false)}/>} onClose={handleCloseButton} />
       }
+
+      {
+        isEditModalOpen && item.type === 'text' &&
+        <Modal children={<TextField isEditable textInput={item} closeModal={() => setIsEditModalOpen(false)}/>} onClose={handleCloseButton} />
+      }
+
+      {/* {
+        isEditModalOpen && item.type === 'list' &&
+        <Modal children={<ListField isEditable button={item} closeModal={() => setIsEditModalOpen(false)}/>} onClose={handleCloseButton} />
+      }
+
+      {
+        isEditModalOpen && item.type === 'checkbox' &&
+        <Modal children={<CheckboxField isEditable button={item} closeModal={() => setIsEditModalOpen(false)}/>} onClose={handleCloseButton} />
+      } */}
     </>
   );
 }

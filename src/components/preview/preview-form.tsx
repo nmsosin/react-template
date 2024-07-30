@@ -30,6 +30,7 @@ function PreviewForm() {
             style={formStyles}
           >
             {inputList.length > 0 && inputList.map((item, idx) => {
+              console.log("item", item)
               if (item.type === 'text') {
                 return <EditableItem item={item} children={
                   <label key={idx} htmlFor={item.inputType as string + item.id as string}>
@@ -38,6 +39,7 @@ function PreviewForm() {
                       type={item.inputType}
                       name={item.name}
                       required={item.isRequired}
+                      placeholder={item.placeholder}
                     >
                     </input>
                   </label>
