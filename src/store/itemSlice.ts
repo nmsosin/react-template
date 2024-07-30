@@ -29,14 +29,11 @@ const itemSlice = createSlice({
         }
       },
       deleteInput(state, action: PayloadAction<InputItem>) {
-        console.log('state', state);
-        console.log('action', action);
-
         state.inputList = state.inputList.filter(item => item.id !== action.payload.id);
       },
       updateInput(state, action: PayloadAction<InputItem>) {
-        console.log('state', state);
-        console.log('action', action);
+        const currentItem = state.inputList.findIndex(item => item.id === action.payload.id);
+        state.inputList[currentItem] = action.payload;
       },
     },
 });

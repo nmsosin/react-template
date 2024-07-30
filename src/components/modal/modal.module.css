@@ -1,0 +1,32 @@
+.modalWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: visibility 1s ease-in-out, opacity 1s ease-in-out;
+}
+.modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+  top: 50vh;
+  left: 50vw;
+  transform: translate(-50%, -50%);
+  background-color: gainsboro;
+  border-radius: 15px;
+  min-width: 720px;
+  padding: 40px;
+}
+
+.closeButton {
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  z-index: 1;
+}
