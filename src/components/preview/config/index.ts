@@ -5,7 +5,7 @@ export const formStyles: CSSProperties = {
   flexDirection: "column",
   margin: "0 auto",
   padding: "40px",
-  width: "300px",
+  width: "400px",
   gap: "10px",
   borderRadius: "20px",
   border: "2px solid #646cff",

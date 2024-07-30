@@ -1,9 +1,11 @@
 import styles from './preview-form.module.css'
 import { useAppSelector } from "../../utils/hooks";
-import { CSSProperties, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import LayoutCode from './export-layout/export-layout';
 import NavBar from './nav-bar/nav-bar';
 import { formStyles, normalizedStyles } from './config';
+
+import EditableItem from './editable-item/editable-item';
 
 function PreviewForm() {
   const inputList = useAppSelector(state => state.inputs.inputList);
@@ -29,7 +31,7 @@ function PreviewForm() {
           >
             {inputList.length > 0 && inputList.map((item, idx) => {
               if (item.type === 'text') {
-                return (
+                return <EditableItem item={item} children={
                   <label key={idx} htmlFor={item.inputType as string + item.id as string}>
                     {item.label}
                     <input
@@ -38,24 +40,31 @@ function PreviewForm() {
                       required={item.isRequired}
                     >
                     </input>
-                  </label>);
+                  </label>
+                } />
               } else if (item.type === 'list') {
-                return <select>
-                  { 
-                    item.options && item.options.length > 0 && (item.options as string[]).map((select, index) => {
-                      return <option value="select" key={index}>{select}</option>
-                    })
-                  }
-                </select>
+                return <EditableItem item={item} children={
+                  <select>
+                    { 
+                      item.options && item.options.length > 0 && (item.options as string[]).map((select, index) => {
+                        return <option value="select" key={index}>{select}</option>
+                      })
+                    }
+                  </select>
+                } />
               } else if (item.type === 'checkbox') {
-                return <label htmlFor={item.id}>
-                  <input type="checkbox" required={item.isRequired} id={item.id} />
-                    { item.label }
-                </label>
+                return <EditableItem item={item} children={
+                  <label htmlFor={item.id}>
+                    <input type="checkbox" required={item.isRequired} id={item.id} />
+                      { item.label }
+                  </label> 
+                } />
               } else if (item.type === 'button') {
-                return <button key={idx} type="submit">
-                  {item.name}
-                </button>
+                return <EditableItem item={item} children={
+                  <button key={idx} type="submit">
+                    {item.name}
+                  </button>
+                } />
               }
               
               })
