@@ -4,7 +4,8 @@ export type InputItem  = {
   id?: string;
   name?: string;
   label?: string;
-  options?: string | string[];
+  options?: string[];
+  optionsString?: string;
   placeholder?: string;
   isRequired?: boolean;
 };

@@ -10,7 +10,7 @@ export const formStyles: CSSProperties = {
   borderRadius: "20px",
   border: "2px solid #646cff",
   boxSizing: "border-box",
-  backgroundColor: "dimgrey",
+  backgroundColor: "rgba(207, 207, 207, 0.45)",
 }
 
 export const normalizedStyles = ".form{" + Object.entries(formStyles).map(([k, v]) => {

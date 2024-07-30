@@ -22,18 +22,15 @@ function PreviewForm() {
       <div className={styles.container}>
         { activePage === 'preview' && inputList.length > 0 &&
           <form
-            action='submit'
             id="codeOutput"
-            onSubmit={() => alert('Submit handler')}
             ref={formRef}
             className="form"
             style={formStyles}
           >
-            {inputList.length > 0 && inputList.map((item, idx) => {
-              console.log("item", item)
+            {inputList.length > 0 && inputList.map((item) => {
               if (item.type === 'text') {
-                return <EditableItem item={item} children={
-                  <label key={idx} htmlFor={item.inputType as string + item.id as string}>
+                return <EditableItem key={item.id} item={item} children={
+                  <label htmlFor={`${item.inputType}_${item.id}`}>
                     {item.label}
                     <input
                       type={item.inputType}
@@ -45,25 +42,25 @@ function PreviewForm() {
                   </label>
                 } />
               } else if (item.type === 'list') {
-                return <EditableItem item={item} children={
+                return <EditableItem key={item.id} item={item} children={
                   <select>
                     { 
-                      item.options && item.options.length > 0 && (item.options as string[]).map((select, index) => {
+                      item.options && item.options.length > 0 && item.options.map((select, index) => {
                         return <option value="select" key={index}>{select}</option>
                       })
                     }
                   </select>
                 } />
               } else if (item.type === 'checkbox') {
-                return <EditableItem item={item} children={
+                return <EditableItem key={item.id} item={item} children={
                   <label htmlFor={item.id}>
                     <input type="checkbox" required={item.isRequired} id={item.id} />
                       { item.label }
                   </label> 
                 } />
               } else if (item.type === 'button') {
-                return <EditableItem item={item} children={
-                  <button key={idx} type="submit">
+                return <EditableItem key={item.id} item={item} children={
+                  <button type="button" onClick={() => alert('Submit button click handler')}>
                     {item.name}
                   </button>
                 } />

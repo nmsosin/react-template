@@ -1,6 +1,6 @@
-import CheckboxField from './checkbox-field/checkbox-field';
+import CheckboxField from '../checkbox-field/checkbox-field';
 import styles from './control-panel.module.css';
-import ListField from './list-field/list-field';
+import ListField from '../list-field/list-field';
 import SubmitButton from '../submit-button/submit-button';
 import TextField from '../text-field/text-field';
 
